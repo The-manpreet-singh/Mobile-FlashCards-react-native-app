@@ -5,15 +5,11 @@
 		"platforms": ["ios", "android", "web"],
 		"version": "1.0.0",
 		"orientation": "portrait",
-		"icon": "./assets/icon.png",
 		"splash": {
-			"image": "./assets/card.png",
 			"resizeMode": "contain",
 			"backgroundColor": "#ffffff"
 		},
-		"notification": {
-			"icon": "https://tylermcginnis.com/udacifitness-45.png"
-		},
+
 		"android": {
 			"package": "org.mobileflashcards.exp"
 		},
