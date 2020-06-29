@@ -48,8 +48,14 @@ export default function App() {
 		<NavigationContainer>
 			<Stack.Navigator>
 				<Stack.Screen name="Home" component={Home} options={{ title: "Deck List" }} />
+				<Stack.Screen name="DeckList" component={DeckList} options={({ route }) => ({ title: route.params.title })} />
+				<Stack.Screen
+					name="AddQuestion"
+					component={AddQuestion}
+					options={({ route }) => ({ title: route.params.title })}
+				/>
+				<Stack.Screen name="Quiz" component={Quiz} options={({ route }) => ({ title: route.params.title + " Quiz" })} />
 			</Stack.Navigator>
-			<Stack.Screen name="DeckList" component={DeckList} options={({ route }) => ({ title: route.params.title })} />
 		</NavigationContainer>
 	);
 }
