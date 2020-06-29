@@ -5,7 +5,7 @@ import { addDeck } from "../utils/api";
 import { Platform, StyleSheet } from "react-native";
 import { white, purple, gray } from "./utils/colors";
 
-export default function AddDeck({ navigation }) {
+const AddDeck= ({ navigation }) => {
 	const [addDeckName, setAddDeckName] = useState("");
 
 	addNewDeck = () => {
@@ -88,3 +88,6 @@ const styles = StyleSheet.create({
 		marginBottom: 25,
 	},
 });
+
+
+export default AddDeck;
