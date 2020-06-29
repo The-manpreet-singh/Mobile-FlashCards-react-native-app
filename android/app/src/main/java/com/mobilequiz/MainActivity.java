@@ -1,4 +1,4 @@
-package com.mobileflashcards;
+package com.mobilequiz;
 
 import android.os.Bundle;
 
