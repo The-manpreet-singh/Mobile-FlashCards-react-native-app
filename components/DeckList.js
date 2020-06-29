@@ -29,7 +29,10 @@ const DeckList = ({ route, navigation }) => {
 	return (
 		<View style={styles.container}>
 			<Text style={[styles.deckTitle, { margin: 50 }]}>Number of cards: {initDeck.questions.length}</Text>
-			<TouchableOpacity style={styles.button} onPress={() => navigation.navigate("AddQuestion", { title: initDeck.title })}>
+			<TouchableOpacity
+				style={styles.button}
+				onPress={() => navigation.navigate("AddQuestion", { title: initDeck.title })}
+			>
 				<Text>Add Cards</Text>
 			</TouchableOpacity>
 			<TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Quiz", { title: initDeck.title })}>
@@ -37,7 +40,7 @@ const DeckList = ({ route, navigation }) => {
 			</TouchableOpacity>
 		</View>
 	);
-}
+};
 
 const styles = StyleSheet.create({
 	container: {
@@ -92,6 +95,5 @@ const styles = StyleSheet.create({
 		marginBottom: 25,
 	},
 });
-
 
 export default DeckList;

@@ -7,7 +7,7 @@ import { getDecks } from "../utils/api";
 
 const DeckListItem = ({ navigation }) => {
 	const [data, setData] = useState({});
-	const [loading, setloading] = useState(true);
+	const [loading, setLoading] = useState(true);
 
 	useFocusEffect(() => {
 		getDecks()
