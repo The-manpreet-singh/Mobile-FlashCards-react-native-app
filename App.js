@@ -7,7 +7,7 @@ export default function App() {
 	return (
 		<View>
 			<DeckList />
-			<DeckListItem />
+			{/* <DeckListItem /> */}
 		</View>
 	);
 }
