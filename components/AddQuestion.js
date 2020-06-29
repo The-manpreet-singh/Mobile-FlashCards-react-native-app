@@ -13,8 +13,8 @@ class AddQuestion extends Component {
 	addCard = () => {
 		const { addQuestion, addAnswer } = this.state;
 		const card = {
-			addQuestion: addQuestion,
-			addAnswer: addAnswer,
+			question: addQuestion,
+			answer: addAnswer,
 		};
 		const { title } = this.props.route.params;
 		addCardToDeck(title, card)
@@ -33,7 +33,7 @@ class AddQuestion extends Component {
 				<TextInput
 					style={styles.input}
 					placeholder="Add question..."
-					onChangeText={(text) =>this.setState({ addQuestion: text })}
+					onChangeText={(text) => this.setState({ addQuestion: text })}
 					defaultValue={addQuestion}
 				/>
 				<TextInput
