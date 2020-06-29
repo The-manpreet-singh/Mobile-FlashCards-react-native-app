@@ -15,20 +15,11 @@ const Quiz = ({ route, navigation }) => {
 	let [showAnswer, setShowAnswer] = useState(false);
 	const [loading, setLoading] = useState(true);
 
-	useFocusEffect(() => {
-		getDeck(title)
-			.then((data) => {
-				setInitQuestions(data.initQuestions);
-			})
-			.then(() => setLoading(false))
-			.catch((error) => Alert.alert(error));
-	}, [title]);
-
 	useEffect(() => {
 		clearLocalNotification().then(setLocalNotification);
 	}, []);
 
-	function displayNextCard() {
+	function nextCard() {
 		if (initQuestions.length === initIndex + 1) {
 			setQuizFinish(true);
 		} else {
@@ -37,18 +28,27 @@ const Quiz = ({ route, navigation }) => {
 		setShowAnswer(false);
 	}
 
-	function displayAnswer() {
+	useFocusEffect(() => {
+		getDeck(title)
+			.then((res) => {
+				setInitQuestions(res.questions);
+			})
+			.then(() => setLoading(false))
+			.catch((error) => Alert.alert(error));
+	}, [title]);
+
+	function showGiveAnswer() {
 		setShowAnswer(true);
 	}
 
-	function markCorrect() {
+	function pressCorrect() {
 		setNumRight((numRight += 1));
-		displayNextCard();
+		nextCard();
 	}
-	function markIncorrect() {
-		displayNextCard();
+	function pressIncorrect() {
+		nextCard();
 	}
-	function startOver() {
+	function startQuiz() {
 		setNumRight(0);
 		setInitIndex(0);
 		setQuizFinish(false);
@@ -70,7 +70,7 @@ const Quiz = ({ route, navigation }) => {
 					<Text style={[styles.deckTitle, { margin: 25 }]}>
 						you scored: {numRight} of {initQuestions.length}
 					</Text>
-					<TouchableOpacity onPress={startOver} style={styles.button}>
+					<TouchableOpacity onPress={startQuiz} style={styles.button}>
 						<Text style={styles.deckSubTitle}>Restart Quiz</Text>
 					</TouchableOpacity>
 					<TouchableOpacity onPress={() => navigation.navigate("DeckList", { title })} style={styles.button}>
@@ -87,20 +87,20 @@ const Quiz = ({ route, navigation }) => {
 					{showAnswer === false ? (
 						<View style={styles.container}>
 							<Text style={[styles.deckTitle, { margin: 25 }]}>{initQuestions[initIndex].question}</Text>
-							<TouchableOpacity onPress={displayAnswer} style={styles.button}>
+							<TouchableOpacity onPress={showGiveAnswer} style={styles.button}>
 								<Text style={styles.deckSubTitle}>Show answer</Text>
 							</TouchableOpacity>
-							<TouchableOpacity onPress={displayNextCard} style={styles.button}>
+							<TouchableOpacity onPress={nextCard} style={styles.button}>
 								<Text style={styles.deckSubTitle}>Next card</Text>
 							</TouchableOpacity>
 						</View>
 					) : (
 						<View style={styles.container}>
 							<Text style={[styles.deckTitle, { margin: 25 }]}>{initQuestions[initIndex].answer}</Text>
-							<TouchableOpacity onPress={markCorrect} style={styles.button}>
+							<TouchableOpacity onPress={pressCorrect} style={styles.button}>
 								<Text style={styles.deckSubTitle}>correct</Text>
 							</TouchableOpacity>
-							<TouchableOpacity onPress={markIncorrect} style={styles.button}>
+							<TouchableOpacity onPress={pressIncorrect} style={styles.button}>
 								<Text style={styles.deckSubTitle}>incorrect</Text>
 							</TouchableOpacity>
 						</View>
