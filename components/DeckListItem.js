@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, ActivityIndicator, TouchableOpacity, ScrollView } from "react-native";
 import { Platform, StyleSheet } from "react-native";
-import { white, purple, gray } from "./utils/colors";
+import { white, purple, gray } from "../utils/colors";
 import { useFocusEffect } from "@react-navigation/native";
 import { getDecks } from "../utils/api";
 

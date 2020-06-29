@@ -8,6 +8,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Icon } from "react-native-elements";
 import DeckList from "./components/DeckList";
 import DeckListItem from "./components/DeckListItem";
+import AddDeck from "./components/AddDeck";
+import AddQuestion from "./components/AddQuestion";
+import Quiz from "./components/Quiz";
 import { setLocalNotification, clearLocalNotification } from "./utils/notification";
 
 function Home() {
@@ -23,10 +26,10 @@ function Home() {
 				}}
 			/>
 			<Tab.Screen
-				name="DeckList"
-				component={DeckList}
+				name="AddDeck"
+				component={AddDeck}
 				options={{
-					tabBarLabel: "Deck List",
+					tabBarLabel: "Add Deck",
 					tabBarIcon: ({ tintColor }) => <Icon name="list" size={30} color={tintColor} />,
 				}}
 			/>

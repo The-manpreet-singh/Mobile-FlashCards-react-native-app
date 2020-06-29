@@ -14,7 +14,6 @@ const Quiz = ({ route, navigation }) => {
 	const { title } = route.params;
 	let [showAnswer, setShowAnswer] = useState(false);
 	const [loading, setLoading] = useState(true);
-	
 
 	useFocusEffect(() => {
 		getDeck(title)
