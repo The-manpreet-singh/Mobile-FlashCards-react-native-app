@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Text, View, TextInput, TouchableOpacity } from "react-native";
 import { addCardToDeck } from "../utils/api";
 import { Platform, StyleSheet } from "react-native";
-import { white, purple, gray } from "./utils/colors";
+import { white, purple, gray } from "../utils/colors";
 
 
 const AddQuestion=({ route, navigation }) => {
