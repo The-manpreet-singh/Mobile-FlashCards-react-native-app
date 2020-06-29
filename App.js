@@ -13,7 +13,7 @@ import AddQuestion from "./components/AddQuestion";
 import Quiz from "./components/Quiz";
 import { setNotification, clearNotification } from "./utils/notification";
 
-function Home() {
+const Home = () => {
 	const Tab = createBottomTabNavigator();
 	return (
 		<Tab.Navigator>
@@ -35,7 +35,7 @@ function Home() {
 			/>
 		</Tab.Navigator>
 	);
-}
+};
 
 export default function App() {
 	useEffect(() => {

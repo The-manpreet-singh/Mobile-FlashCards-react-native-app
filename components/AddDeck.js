@@ -1,38 +1,45 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import { saveDeck } from "../utils/api";
 
 import { Platform, StyleSheet } from "react-native";
 import { white, purple, gray } from "../utils/colors";
 
-const AddDeck= ({ navigation }) => {
-	const [addDeckName, setAddDeckName] = useState("");
+class AddDeck extends Component {
+	state = {
+		addDeckName: "",
+	};
 
 	addNewDeck = () => {
+		const { addDeckName } = this.state;
 		saveDeck(addDeckName)
 			.then(() => {
-				setAddDeckName("");
-				navigation.navigate("DeckList", { title: addDeckName });
+				this.setState({ addDeckName: "" });
+				this.props.navigation.navigate("DeckList", { title: addDeckName });
 			})
 			.catch((err) => {
 				console.log(err);
 			});
 	};
-	return (
-		<View style={styles.container}>
-			<Text style={[styles.deckTitle, { margin: 20 }]}>Create new deck</Text>
-			<TextInput
-				style={styles.input}
-				placeholder="deck name"
-				onChangeText={(text) => setAddDeckName(text)}
-				defaultValue={addDeckName}
-			/>
 
-			<TouchableOpacity style={styles.button} onPress={addNewDeck} disabled={addDeckName ? false : true}>
-				<Text>Create Deck</Text>
-			</TouchableOpacity>
-		</View>
-	);
+	render() {
+		const { addDeckName } = this.state;
+		return (
+			<View style={styles.container}>
+				<Text style={[styles.deckTitle, { margin: 20 }]}>Create new deck</Text>
+				<TextInput
+					style={styles.input}
+					placeholder="deck name"
+					onChangeText={(text) => setAddDeckName(text)}
+					defaultValue={addDeckName}
+				/>
+
+				<TouchableOpacity style={styles.button} onPress={this.addNewDeck} disabled={addDeckName ? false : true}>
+					<Text>Create Deck</Text>
+				</TouchableOpacity>
+			</View>
+		);
+	}
 }
 
 const styles = StyleSheet.create({
@@ -88,6 +95,5 @@ const styles = StyleSheet.create({
 		marginBottom: 25,
 	},
 });
-
 
 export default AddDeck;
