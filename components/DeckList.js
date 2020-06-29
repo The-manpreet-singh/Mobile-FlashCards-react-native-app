@@ -5,7 +5,7 @@ import { useFocusEffect } from "@react-navigation/native";
 import { Platform, StyleSheet } from "react-native";
 import { white, purple, gray } from "../utils/colors";
 
-export default function DeckList({ route, navigation }) {
+const DeckList = ({ route, navigation }) => {
 	const [initDeck, setinitDeck] = useState({});
 	const [loading, setLoading] = useState(true);
 	const { title } = route.params;
@@ -30,10 +30,10 @@ export default function DeckList({ route, navigation }) {
 		<View style={styles.container}>
 			<Text style={[styles.deckTitle, { margin: 50 }]}>Number of cards: {initDeck.questions.length}</Text>
 			<TouchableOpacity style={styles.button} onPress={() => navigation.navigate("AddQuestion", { title: initDeck.title })}>
-				<Text>Add Card</Text>
+				<Text>Add Cards</Text>
 			</TouchableOpacity>
 			<TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Quiz", { title: initDeck.title })}>
-				<Text>Start a Quiz</Text>
+				<Text>Start Quiz</Text>
 			</TouchableOpacity>
 		</View>
 	);
@@ -92,3 +92,6 @@ const styles = StyleSheet.create({
 		marginBottom: 25,
 	},
 });
+
+
+export default DeckList;
