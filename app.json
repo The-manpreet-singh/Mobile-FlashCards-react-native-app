@@ -1,6 +1,6 @@
 {
 	"expo": {
-		"sdkVersion": "38.0.0",
+		"sdkVersion": "37.0.0",
 		"name": "Mobile Flashcards",
 		"description": "The best quiz app",
 		"slug": "mobile-flashcards",
