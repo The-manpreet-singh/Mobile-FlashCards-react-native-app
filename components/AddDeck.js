@@ -30,7 +30,7 @@ class AddDeck extends Component {
 				<TextInput
 					style={styles.input}
 					placeholder="deck name"
-					onChangeText={(text) => setAddDeckName(text)}
+					onChangeText={(text) => this.setState({ addDeckName: text })}
 					defaultValue={addDeckName}
 				/>
 

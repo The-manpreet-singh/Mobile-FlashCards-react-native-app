@@ -33,13 +33,13 @@ class AddQuestion extends Component {
 				<TextInput
 					style={styles.input}
 					placeholder="Add question..."
-					onChangeText={(text) => setAddQuestion(text)}
+					onChangeText={(text) =>this.setState({ addQuestion: text })}
 					defaultValue={addQuestion}
 				/>
 				<TextInput
 					style={styles.input}
 					placeholder="add answer..."
-					onChangeText={(text) => setAddAnswer(text)}
+					onChangeText={(text) => this.setState({ addAnswer: text })}
 					defaultValue={addAnswer}
 				/>
 
