@@ -4,7 +4,7 @@ import { getDeck } from "../utils/api";
 import { useFocusEffect } from "@react-navigation/native";
 import { Platform, StyleSheet } from "react-native";
 import { white, purple, gray } from "../utils/colors";
-import { clearLocalNotification, setLocalNotification } from "../utils/notification";
+import { clearNotification, setNotification } from "../utils/notification";
 
 const Quiz = ({ route, navigation }) => {
 	const [initQuestions, setInitQuestions] = useState([]);
@@ -16,7 +16,7 @@ const Quiz = ({ route, navigation }) => {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		clearLocalNotification().then(setLocalNotification);
+		clearNotification().then(setNotification);
 	}, []);
 
 	function nextCard() {

@@ -3,15 +3,8 @@ import { Notifications } from "expo";
 
 import * as Permissions from "expo-permissions";
 
-const NOTIFICATION_KEY = "Flashcard:notifications";
+const NOTIFICATION_KEY = "Mobile_Flashcard:notifications";
 const CHANNEL_ID = "Reminder";
-
-/**
- * This file contains functions to show different notifications.
- */
-export function clearLocalNotification() {
-	return AsyncStorage.removeItem(NOTIFICATION_KEY).then(Notifications.cancelAllScheduledNotificationsAsync);
-}
 
 function createNotification() {
 	return {
@@ -22,29 +15,38 @@ function createNotification() {
 			sound: true,
 		},
 		android: {
-			channelId: CHANNEL_ID,
+			sound: true,
+			priority: "high",
 			sticky: false,
-			color: "red",
+			vibrate: true,
 		},
 	};
 }
 
 function createChannel() {
 	return {
-		name: "Daily Reminder",
-		description: "A daily reminder to study your flashcards.",
-		sound: true,
-		priority: "high",
+		name: "Daily Quiz",
+		description: "A daily reminder to take the quiz.",
+		ios: {
+			sound: true,
+		},
+		android: {
+			sound: true,
+			priority: "high",
+			sticky: false,
+			vibrate: true,
+		},
 	};
 }
+export function clearNotification() {
+	return AsyncStorage.removeItem(NOTIFICATION_KEY).then(Notifications.cancelAllScheduledNotificationsAsync);
+}
 
-export function setLocalNotification() {
-	console.log("In setLocalNotification");
+export function setNotification() {
 	AsyncStorage.getItem(NOTIFICATION_KEY)
 		.then(JSON.parse)
 		.then((data) => {
 			if (data === null) {
-				console.log("data was null setting notification");
 				Permissions.askAsync(Permissions.NOTIFICATIONS).then(({ status }) => {
 					if (status === "granted") {
 						Notifications.createChannelAndroidAsync(CHANNEL_ID, createChannel())
@@ -70,7 +72,7 @@ export function setLocalNotification() {
 					}
 				});
 			} else {
-				console.log("notification was already set");
+				console.log("notification set");
 			}
 		});
 }

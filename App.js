@@ -11,7 +11,7 @@ import DeckListItem from "./components/DeckListItem";
 import AddDeck from "./components/AddDeck";
 import AddQuestion from "./components/AddQuestion";
 import Quiz from "./components/Quiz";
-import { setLocalNotification, clearLocalNotification } from "./utils/notification";
+import { setNotification, clearNotification } from "./utils/notification";
 
 function Home() {
 	const Tab = createBottomTabNavigator();
@@ -39,7 +39,7 @@ function Home() {
 
 export default function App() {
 	useEffect(() => {
-		setLocalNotification();
+		setNotification();
 	}, []);
 
 	const Stack = createStackNavigator();

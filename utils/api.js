@@ -35,7 +35,7 @@ export async function getDeck(id) {
 	}
 }
 
-export async function addDeck(title) {
+export async function saveDeck(title) {
 	try {
 		await AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({ [title]: { title, questions: [] } }));
 	} catch (error) {

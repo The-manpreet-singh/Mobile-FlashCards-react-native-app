@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, TextInput } from "react-native";
-import { addDeck } from "../utils/api";
+import { saveDeck } from "../utils/api";
 
 import { Platform, StyleSheet } from "react-native";
 import { white, purple, gray } from "../utils/colors";
@@ -9,7 +9,7 @@ const AddDeck= ({ navigation }) => {
 	const [addDeckName, setAddDeckName] = useState("");
 
 	addNewDeck = () => {
-		addDeck(addDeckName)
+		saveDeck(addDeckName)
 			.then(() => {
 				setAddDeckName("");
 				navigation.navigate("DeckList", { title: addDeckName });
