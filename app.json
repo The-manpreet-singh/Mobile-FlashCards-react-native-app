@@ -13,9 +13,6 @@
 			"resizeMode": "contain",
 			"backgroundColor": "#ffffff"
 		},
-		"android": {
-			"package": "org.mobileflashcards.exp"
-		},
 		"updates": {
 			"fallbackToCacheTimeout": 0
 		},

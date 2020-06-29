@@ -6,9 +6,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Icon } from "react-native-elements";
-
 import DeckList from "./components/DeckList";
-
+import DeckListItem from "./components/DeckListItem";
 import { setLocalNotification, clearLocalNotification } from "./utils/notification";
 
 function Home() {
@@ -16,20 +15,19 @@ function Home() {
 	return (
 		<Tab.Navigator>
 			<Tab.Screen
-				name="DeckList"
-				component={DeckListView}
+				name="DeckListItem"
+				component={DeckListItem}
 				options={{
-					tabBarLabel: "Deck List",
+					tabBarLabel: "Deck List Item",
 					tabBarIcon: ({ tintColor }) => <Icon name="list" size={30} color={tintColor} />,
 				}}
 			/>
 			<Tab.Screen
-				name="NewDeck"
-				component={NewDeckView}
+				name="DeckList"
+				component={DeckList}
 				options={{
-					tabBarLabel: "New Deck",
-					title: "New Deck",
-					tabBarIcon: ({ tintColor }) => <Icon name="add" size={30} color={tintColor} />,
+					tabBarLabel: "Deck List",
+					tabBarIcon: ({ tintColor }) => <Icon name="list" size={30} color={tintColor} />,
 				}}
 			/>
 		</Tab.Navigator>
