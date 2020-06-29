@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import { addDeck } from "../utils/api";
 
+import { Platform, StyleSheet } from "react-native";
+import { white, purple, gray } from "./utils/colors";
+
 export default function AddDeck({ navigation }) {
 	const [addDeckName, setAddDeckName] = useState("");
 
