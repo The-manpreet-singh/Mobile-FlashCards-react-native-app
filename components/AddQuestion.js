@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import { Text, View, TextInput, TouchableOpacity } from "react-native";
 import { addCardToDeck } from "../utils/api";
 import { Platform, StyleSheet } from "react-native";
