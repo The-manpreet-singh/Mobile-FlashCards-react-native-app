@@ -4,45 +4,51 @@ import { addCardToDeck } from "../utils/api";
 import { Platform, StyleSheet } from "react-native";
 import { white, purple, gray } from "../utils/colors";
 
+class AddQuestion extends Component {
+	state = {
+		addQuestion: null,
+		addAnswer: null,
+	};
 
-const AddQuestion=({ route, navigation }) => {
-  const [addQuestion, setAddQuestion] = useState(null);
-	const [addAnswer, setAddAnswer] = useState(null);
-	const { title } = route.params;
+	addCard = () => {
+		const { addQuestion, addAnswer } = this.state;
+		const card = {
+			addQuestion: addQuestion,
+			addAnswer: addAnswer,
+		};
+		const { title } = this.props.route.params;
+		addCardToDeck(title, card)
+			.then(() => {
+				this.setState({ addAnswer: "" });
+				this.setState({ addQuestion: "" });
+			})
+			.then(() => this.props.navigation.navigate("DeckList", { title }));
+	};
 
-   addCard= ()=> {
-    const card = {
-      addQuestion: addQuestion,
-      addAnswer: addAnswer,
-    };
-    addCardToDeck(title, card)
-      .then(() => {
-        setAddAnswer("");
-        setAddQuestion("");
-      })
-      .then(() => navigation.navigate("DeckList", { title }));
-  }
-  return (
-    <View style={styles.container}>
-      <Text style={[styles.deckTitle, {marginTop: 50}]}>Add New Question</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Add question..."
-        onChangeText={(text) => setAddQuestion(text)}
-        defaultValue={addQuestion}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="add answer..."
-        onChangeText={(text) => setAddAnswer(text)}
-        defaultValue={addAnswer}
-      />
+	render() {
+		const { addQuestion, addAnswer } = this.state;
+		return (
+			<View style={styles.container}>
+				<Text style={[styles.deckTitle, { marginTop: 50 }]}>Add New Question</Text>
+				<TextInput
+					style={styles.input}
+					placeholder="Add question..."
+					onChangeText={(text) => setAddQuestion(text)}
+					defaultValue={addQuestion}
+				/>
+				<TextInput
+					style={styles.input}
+					placeholder="add answer..."
+					onChangeText={(text) => setAddAnswer(text)}
+					defaultValue={addAnswer}
+				/>
 
-      <TouchableOpacity style={styles.button} onPress={addCard}>
-        <Text>Save</Text>
-      </TouchableOpacity>
-    </View>
-  );
+				<TouchableOpacity style={styles.button} onPress={this.addCard}>
+					<Text>Save</Text>
+				</TouchableOpacity>
+			</View>
+		);
+	}
 }
 
 const styles = StyleSheet.create({
