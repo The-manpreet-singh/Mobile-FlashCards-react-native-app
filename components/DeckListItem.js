@@ -5,7 +5,7 @@ import { white, purple, gray } from "./utils/colors";
 import { useFocusEffect } from "@react-navigation/native";
 import { getDecks } from "../utils/api";
 
-export default function DeckListItem({ navigation }) {
+const DeckListItem = ({ navigation }) => {
 	const [data, setData] = useState({});
 	const [loading, setloading] = useState(true);
 
@@ -43,7 +43,7 @@ export default function DeckListItem({ navigation }) {
 			</View>
 		</ScrollView>
 	);
-}
+};
 
 const styles = StyleSheet.create({
 	container: {
@@ -98,3 +98,5 @@ const styles = StyleSheet.create({
 		marginBottom: 25,
 	},
 });
+
+export default DeckListItem;
