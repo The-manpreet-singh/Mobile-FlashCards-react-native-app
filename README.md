@@ -6,6 +6,15 @@ This React Native app allows users to create decks and questions to quiz. and al
 
 ## Rules: https://review.udacity.com/#!/rubrics/1021/view
 
+for build an apk file folow these commands
+
+commands-
+
+npm install -g exp
+exp build:android
+exp build:status
+
+
 ## Uses:
 
 - Javascript
